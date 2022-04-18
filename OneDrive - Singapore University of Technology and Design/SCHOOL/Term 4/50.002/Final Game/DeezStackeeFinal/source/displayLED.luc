@@ -1,0 +1,79 @@
+module displayLED (
+  input clk,  // clock
+  input rst,  // reset
+  input pattern[16][8], //8 sets of 6bit pattern for each row
+  output a[8], //6 anode pins
+  output c[16]  //8 cathode pins
+  ) {
+
+    .clk(clk) {
+      .rst(rst){
+        counter slowclock(#SIZE(4),#DIV(10));  //smaller the faster the refresh
+        dff cSignal[16](.rst(rst)); //D flip-flip to store cathode signal
+        dff aSignal[8](.rst(rst)); //D flip-flip to store anode signal
+      }
+    }
+
+
+    //we scan through each row and draw the row pattern based on pattern[]
+    //ie. running through 16 rows, each with different pattern and repeat
+    always {
+      a = ~pattern[slowclock.value];
+      c = b1111111111111111;
+      aSignal.d = b00000000;
+      cSignal.d = b1111111111111111;
+
+      case(slowclock.value) {
+        0:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000000000001;
+        1:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000000000010;
+        2:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000000000100;
+        3:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000000001000;
+        4:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000000010000;
+        5:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000000100000;
+        6:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000001000000;
+        7:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000010000000;
+        8:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000000100000000;
+        9:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000001000000000;
+        10:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000010000000000;
+        11:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0000100000000000;
+        12:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0001000000000000;
+        13:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0010000000000000;
+        14:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b0100000000000000;
+        15:
+          aSignal.d = ~pattern[slowclock.value];
+          cSignal.d = b1000000000000000;
+      }
+      a = aSignal.q;
+      c = cSignal.q;
+    }
+  }

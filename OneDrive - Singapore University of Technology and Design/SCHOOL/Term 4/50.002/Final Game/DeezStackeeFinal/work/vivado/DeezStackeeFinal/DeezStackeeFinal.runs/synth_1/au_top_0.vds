@@ -1,0 +1,369 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Apr 18 21:34:38 2022
+# Process ID: 28108
+# Current directory: C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.runs/synth_1
+# Command line: vivado.exe -log au_top_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
+# Log file: C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.runs/synth_1/au_top_0.vds
+# Journal file: C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source au_top_0.tcl -notrace
+Command: synth_design -top au_top_0 -part xc7a35tftg256-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 7988
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1019.371 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'au_top_0' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/au_top_0.v:7]
+INFO: [Synth 8-6157] synthesizing module 'button_conditioner_4' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/button_conditioner_4.v:13]
+	Parameter CLK_FREQ bound to: 26'b10111110101111000010000000 
+	Parameter MIN_DELAY bound to: 5'b10100 
+	Parameter NUM_SYNC bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'pipeline_9' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/pipeline_9.v:11]
+	Parameter DEPTH bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'pipeline_9' (1#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/pipeline_9.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'button_conditioner_4' (2#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/button_conditioner_4.v:13]
+INFO: [Synth 8-6157] synthesizing module 'edge_detector_5' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/edge_detector_5.v:12]
+	Parameter RISE bound to: 1'b1 
+	Parameter FALL bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'edge_detector_5' (3#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/edge_detector_5.v:12]
+INFO: [Synth 8-6157] synthesizing module 'reset_conditioner_1' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/reset_conditioner_1.v:11]
+	Parameter STAGES bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'reset_conditioner_1' (4#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/reset_conditioner_1.v:11]
+INFO: [Synth 8-6157] synthesizing module 'matrixConnect_2' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/matrixConnect_2.v:7]
+INFO: [Synth 8-6157] synthesizing module 'matrixFSM_7' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/matrixFSM_7.v:7]
+	Parameter IDLE_state bound to: 4'b0000 
+	Parameter INITIAL_state bound to: 4'b0001 
+	Parameter SHIFT_state bound to: 4'b0010 
+	Parameter INIT_CHECK_state bound to: 4'b0011 
+	Parameter INCREASE_LEVEL_state bound to: 4'b0100 
+	Parameter CHECK_state bound to: 4'b0101 
+	Parameter END_STATE_state bound to: 4'b0110 
+	Parameter WIN_state bound to: 4'b0111 
+	Parameter LOSE_state bound to: 4'b1000 
+	Parameter TIMER_state bound to: 4'b1001 
+	Parameter TIMER_END_state bound to: 4'b1010 
+INFO: [Synth 8-6157] synthesizing module 'endState_13' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/endState_13.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'endState_13' (5#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/endState_13.v:7]
+INFO: [Synth 8-6157] synthesizing module 'resetButton_14' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/resetButton_14.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'resetButton_14' (6#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/resetButton_14.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_15' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_15.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_math_18' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_math_18.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_add_mul_div_23' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_add_mul_div_23.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_adder_26' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_adder_26.v:7]
+	Parameter NUMBER_OF_BITS bound to: 5'b10000 
+INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_adder_27' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/sixteen_bit_adder_27.v:7]
+INFO: [Synth 8-6157] synthesizing module 'full_adder_30' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/full_adder_30.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'full_adder_30' (7#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/full_adder_30.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_adder_27' (8#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/sixteen_bit_adder_27.v:7]
+INFO: [Synth 8-6157] synthesizing module 'get_z_28' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/get_z_28.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'get_z_28' (9#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/get_z_28.v:7]
+INFO: [Synth 8-6157] synthesizing module 'get_v_29' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/get_v_29.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'get_v_29' (10#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/get_v_29.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'alu_adder_26' (11#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_adder_26.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_add_mul_div_23.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'alu_add_mul_div_23' (12#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_add_mul_div_23.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_math_18.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'alu_math_18' (13#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_math_18.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_shift_19' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_shift_19.v:7]
+INFO: [Synth 8-6157] synthesizing module 'shifterModule_24' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:25]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:38]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:51]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:64]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:79]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:92]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:105]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:118]
+INFO: [Synth 8-6155] done synthesizing module 'shifterModule_24' (14#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_shift_19.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'alu_shift_19' (15#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_shift_19.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_compare_20' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_compare_20.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_compare_20.v:19]
+INFO: [Synth 8-6155] done synthesizing module 'alu_compare_20' (16#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_compare_20.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_boole_21' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_boole_21.v:7]
+INFO: [Synth 8-6157] synthesizing module 'boole_25' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/boole_25.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'boole_25' (17#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/boole_25.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'alu_boole_21' (18#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_boole_21.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'alu_15' (19#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_15.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_16' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/counter_16.v:14]
+	Parameter SIZE bound to: 4'b1000 
+	Parameter DIV bound to: 5'b11001 
+	Parameter TOP bound to: 1'b0 
+	Parameter UP bound to: 1'b1 
+	Parameter MAX_VALUE bound to: 26'b01111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'counter_16' (20#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/counter_16.v:14]
+INFO: [Synth 8-6157] synthesizing module 'rowShift_17' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/rowShift_17.v:7]
+INFO: [Synth 8-6157] synthesizing module 'directionChange_22' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/directionChange_22.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'directionChange_22' (21#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/directionChange_22.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'rowShift_17' (22#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/rowShift_17.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/matrixFSM_7.v:137]
+INFO: [Synth 8-6155] done synthesizing module 'matrixFSM_7' (23#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/matrixFSM_7.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'matrixConnect_2' (24#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/matrixConnect_2.v:7]
+INFO: [Synth 8-6157] synthesizing module 'displayLED_3' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/displayLED_3.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_8' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/counter_8.v:14]
+	Parameter SIZE bound to: 3'b100 
+	Parameter DIV bound to: 4'b1010 
+	Parameter TOP bound to: 1'b0 
+	Parameter UP bound to: 1'b1 
+	Parameter MAX_VALUE bound to: 11'b01111111111 
+INFO: [Synth 8-6155] done synthesizing module 'counter_8' (25#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/counter_8.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'displayLED_3' (26#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/displayLED_3.v:7]
+INFO: [Synth 8-6157] synthesizing module 'multi_seven_seg_6' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/multi_seven_seg_6.v:12]
+	Parameter DIGITS bound to: 3'b100 
+	Parameter DIV bound to: 5'b10000 
+	Parameter DIGIT_BITS bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'counter_10' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/counter_10.v:14]
+	Parameter SIZE bound to: 2'b10 
+	Parameter DIV bound to: 5'b10000 
+	Parameter TOP bound to: 4'b0011 
+	Parameter UP bound to: 1'b1 
+	Parameter MAX_VALUE bound to: 20'b00111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'counter_10' (27#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/counter_10.v:14]
+INFO: [Synth 8-6157] synthesizing module 'seven_seg_11' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/seven_seg_11.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'seven_seg_11' (28#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/seven_seg_11.v:7]
+INFO: [Synth 8-6157] synthesizing module 'decoder_12' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/decoder_12.v:11]
+	Parameter WIDTH bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'decoder_12' (29#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/decoder_12.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'multi_seven_seg_6' (30#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/multi_seven_seg_6.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (31#1) [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/au_top_0.v:7]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1019.371 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1019.371 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1019.371 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 1019.371 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/constraint/custom.xdc]
+Finished Parsing XDC File [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/constraint/custom.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/constraint/custom.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Program Files/Alchitry/Alchitry Labs/library/components/au.xdc]
+Finished Parsing XDC File [C:/Program Files/Alchitry/Alchitry Labs/library/components/au.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1064.871 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1064.871 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1064.871 ; gain = 45.500
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tftg256-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1064.871 ; gain = 45.500
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1064.871 ; gain = 45.500
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-327] inferring latch for variable 'shiftOutput_reg' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/shifterModule_24.v:66]
+WARNING: [Synth 8-327] inferring latch for variable 'cmp_reg' [C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.srcs/sources_1/imports/verilog/alu_compare_20.v:21]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1064.871 ; gain = 45.500
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   23 Bit       Adders := 1     
+	   2 Input   22 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 3     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 5     
++---XORs : 
+	   3 Input      1 Bit         XORs := 32    
+	   2 Input      1 Bit         XORs := 34    
++---Registers : 
+	              144 Bit    Registers := 2     
+	              128 Bit    Registers := 1     
+	               23 Bit    Registers := 1     
+	               22 Bit    Registers := 1     
+	               18 Bit    Registers := 3     
+	               16 Bit    Registers := 10    
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   2 Input  144 Bit        Muxes := 6     
+	  11 Input  144 Bit        Muxes := 1     
+	   2 Input   23 Bit        Muxes := 1     
+	   2 Input   22 Bit        Muxes := 1     
+	   2 Input   18 Bit        Muxes := 3     
+	   2 Input   16 Bit        Muxes := 38    
+	  11 Input   16 Bit        Muxes := 8     
+	   2 Input    8 Bit        Muxes := 2     
+	  11 Input    8 Bit        Muxes := 2     
+	  17 Input    8 Bit        Muxes := 1     
+	   3 Input    6 Bit        Muxes := 1     
+	  11 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 3     
+	  11 Input    4 Bit        Muxes := 2     
+	   4 Input    4 Bit        Muxes := 3     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 103   
+	   4 Input    1 Bit        Muxes := 5     
+	  11 Input    1 Bit        Muxes := 14    
+	   3 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1064.871 ; gain = 45.500
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1064.871 ; gain = 45.500
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1078.477 ; gain = 59.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1097.598 ; gain = 78.227
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    48|
+|3     |LUT1   |    10|
+|4     |LUT2   |    82|
+|5     |LUT3   |    28|
+|6     |LUT4   |    97|
+|7     |LUT5   |   143|
+|8     |LUT6   |   310|
+|9     |MUXF7  |    16|
+|10    |MUXF8  |     8|
+|11    |FDRE   |   695|
+|12    |FDSE   |     4|
+|13    |IBUF   |     5|
+|14    |OBUF   |    69|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:40 . Memory (MB): peak = 1101.129 ; gain = 36.258
+Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1101.129 ; gain = 81.758
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1113.141 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 72 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1113.141 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+90 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 1113.141 ; gain = 93.770
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Dylan/OneDrive - Singapore University of Technology and Design/SCHOOL/Term 4/50.002/Final Game/DeezStackeeFinal/work/vivado/DeezStackeeFinal/DeezStackeeFinal.runs/synth_1/au_top_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_synth.rpt -pb au_top_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 18 21:35:30 2022...

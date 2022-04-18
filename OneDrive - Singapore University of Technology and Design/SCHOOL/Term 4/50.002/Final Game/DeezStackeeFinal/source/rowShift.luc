@@ -1,0 +1,67 @@
+module rowShift (
+    input clk,
+    input shift_or_check,
+    input pre_row[16],
+    input current_row[16],
+    output nextRefresh [16]
+  ){
+    .clk(clk){
+      dff predirection(#INIT(1));
+    
+ 
+      directionChange directionChange;
+    }
+    
+
+    alu alu;
+    
+  always{
+   
+    
+    directionChange.current_row = 16b0;
+    directionChange.direction = b1;
+    nextRefresh=16b0;
+   
+    
+
+    alu.a= current_row;
+    alu.b=h0000;
+    alu.alufn=6b0;
+    
+   if(shift_or_check==b1){
+        directionChange.direction=predirection.q;
+        directionChange.current_row= current_row;
+    
+        if(directionChange.next_direction==b1){
+          
+           alu.a= current_row;
+           alu.b=h0001;
+           alu.alufn=h20; //SHL h21
+           predirection.d=b1;
+           nextRefresh=alu.alu;
+        
+        
+        }else if(directionChange.next_direction==b0){
+      
+           alu.a= current_row;
+           alu.b=h0001;
+           alu.alufn=h21; //SHR h20
+           predirection.d=b0;
+           nextRefresh=alu.alu;
+
+        }
+
+   }else if(shift_or_check==b0){
+    
+        alu.a= current_row;
+        alu.b= pre_row;
+        alu.alufn= h18; //AND h18
+      
+      
+        nextRefresh=alu.alu;
+
+      
+    }
+
+  }
+}

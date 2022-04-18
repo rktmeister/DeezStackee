@@ -1,0 +1,40 @@
+module alu_adder (
+    input alufn0,
+    input x[16],
+    input y[16],
+    output s[16],
+    output z,
+    output v,
+    output n
+  ) {
+  
+  sixteen_bit_adder adder16;
+  get_z z_value;
+  get_v v_value; 
+  
+  sig yNew[16]; 
+  sig s_mid[16];
+  const NUMBER_OF_BITS=16;
+  var i;
+  
+  always{
+    for( i=0; i<NUMBER_OF_BITS; i++){
+      yNew[i]=y[i]^alufn0;              //negate y when alufn0 is 1
+        }
+    adder16.y=yNew;                     //assign inputs of 16 adder module
+    adder16.x=x;
+    adder16.cin=alufn0;
+    s_mid=adder16.s;                    //assign output from 16adder module
+    s=s_mid;
+    
+    n=s_mid[15];                        //n is the value of the MSB of sum output
+    
+    z_value.s=s_mid;                    //assign input of get_z module
+    z=z_value.z;                        //assign output from get_z module
+    
+    v_value.s16=s_mid[15];              //assign inputs into get_v module
+    v_value.x16=x[15];
+    v_value.y16=yNew[15];
+    v=v_value.v;                        //assign output from get_v module
+ }
+}

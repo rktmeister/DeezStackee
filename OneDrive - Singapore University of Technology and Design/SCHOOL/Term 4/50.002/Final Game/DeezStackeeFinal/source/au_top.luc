@@ -1,0 +1,111 @@
+module au_top (
+    input clk,              // 100MHz clock
+    input rst_n,            // reset button (active low)
+    output led [8],         // 8 user controllable LEDs
+    input usb_rx,           // USB->Serial input
+    output usb_tx,          // USB->Serial output
+    output led_cathode[8],
+    output led_anode[16],
+    input stop_button,
+    input reset_button,
+    /*
+    output io_led [3][8],   // LEDs on IO Shield
+    output io_seg [8],      // 7-segment LEDs on IO Shield
+    output io_sel [4],      // Digit select on IO Shield
+    input io_dip[3][8],
+    input io_button[5],
+    */
+    output timer_seg[8],
+    output timer_sel[4],
+   
+    output score_seg[8],
+    output score_sel[4],
+    output highScore_seg[8],
+    output highScore_sel[4]
+    
+  ) {
+  
+    sig rst;
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond; 
+    matrixConnect matrixConnect(.rst(rst));
+    dff led_matrix[18][8](#INIT({b11111111,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,b11111111}));
+    displayLED displayLED(.rst(rst));
+    button_conditioner buttoncond[2];
+    edge_detector buttondetector[2] (#RISE(1),#FALL(0));
+    dff time[4][4];
+    dff score[4][4];
+    dff highScore[4][4];
+    
+  .rst(rst){
+    multi_seven_seg seg_timer;
+    multi_seven_seg seg_score;
+    multi_seven_seg seg_highScore;
+      
+    }
+  }
+  
+  always {
+    reset_cond.in = ~rst_n; // input raw inverted reset signal
+    rst = reset_cond.out;   // conditioned reset
+    
+    usb_tx = usb_rx;        // loop serial port
+    
+    led = 16h00;             // turn LEDs off
+   /*
+    io_led = 3x{{8h00}};    // turn LEDs off
+    io_seg = 8hff;          // turn segments off
+    io_sel = 4hf;           // select no digits
+    */    
+    buttoncond.in[0] = stop_button;
+    buttoncond.in[1] = reset_button;
+    
+    buttondetector.in=buttoncond.out;
+  
+    matrixConnect.stop_button=buttondetector.out[0];
+    matrixConnect.reset_button=buttondetector.out[1];
+    
+    time.d = matrixConnect.time_out;
+    score.d = matrixConnect.score_out;
+    
+    
+    
+    if (highScore.q[2] < score.q[2]){
+      highScore.d = score.q;
+    }
+    else if ((highScore.q[2] == score.q[2])){
+      if (highScore.q[1] < score.q[1]){
+      highScore.d = score.q;
+      }else if (highScore.q[1] == score.q[1]){
+      if (highScore.q[0] < score.q[0]){
+      highScore.d = score.q;
+        }
+      }
+    }
+
+    
+    led_matrix.d= matrixConnect.led_matrix;
+    displayLED.pattern=led_matrix.q[15:0];  
+    //displayLED.pattern = {b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111,b11111111};
+    led_cathode=displayLED.a;
+    led_anode=displayLED.c;
+    
+    
+    seg_timer.values = {time.q[0],time.q[1],time.q[2],time.q[3]}; //time.q[0],time.q[1],time.q[2],time.q[3]
+    timer_seg = ~seg_timer.seg;
+    timer_sel = ~seg_timer.sel;
+    
+    seg_score.values = {score.q[0], score.q[1], score.q[2], score.q[3]};
+    
+    score_seg = ~seg_score.seg;
+    score_sel = ~seg_score.sel;
+    
+    seg_highScore.values = {highScore.q[0], highScore.q[1], highScore.q[2], highScore.q[3]};
+    highScore_seg = ~seg_highScore.seg;
+    highScore_sel = ~seg_highScore.sel;
+    
+    
+  }
+}

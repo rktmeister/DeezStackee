@@ -1,0 +1,27 @@
+module directionChange (
+    input clk,
+    input direction, //initial one, 0 for right, 1 for left
+    input current_row[16],
+    output next_direction
+  ){
+   
+
+  always{
+    next_direction=b0;
+    
+    if(direction==b0){
+      if(current_row[0]==b1){
+        next_direction=1;//if we want to move right, but we already at the edge of the matrix, then we turn to move left
+      }else if(current_row[0]==b0){ 
+        next_direction=0;
+      }
+    }else if(direction==b1){
+      if(current_row[7]==b1){//=1000 0000
+        next_direction=0;
+      }else if(current_row[7]==b0){
+        next_direction=1;
+      }
+    }
+    
+  }
+}

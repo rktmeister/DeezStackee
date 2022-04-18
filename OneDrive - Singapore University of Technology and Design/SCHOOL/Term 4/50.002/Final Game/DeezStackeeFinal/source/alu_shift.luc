@@ -1,0 +1,41 @@
+module alu_shift (
+    input x[16],
+    input y[4],
+    input alufn[2],
+    output shif[16]
+  ) {
+  
+  sig xNew[16];
+  sig shift_mid[16];
+  shifterModule shifterModule;
+  var i;
+  
+  always{
+  
+    shif = 16b0;                        //initialise shif
+  
+    case(alufn[0]){
+    b0:
+      xNew=x;
+    b1:
+      for(i=0;i<16;i++){
+        xNew[i]=x[15-i];               //invert x
+      }
+    default: 
+      xNew=x;
+     }
+  
+    shifterModule.x=xNew;                     //assign inputs to shifterModule module
+    shifterModule.b=y;
+    shifterModule.alufn=alufn[1];
+    shift_mid=shifterModule.shiftOutput;     //assign output from shifterModule module
+ 
+    case(alufn[0]){
+    b0:
+      shif=shift_mid;                  
+    b1:
+      for(i=0;i<16;i++){
+        shif[i]=shift_mid[15-i];       //invert shift_mid
+    }
+  }
+}

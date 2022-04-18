@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="DeezStackeeFinal" board="Alchitry Au" language="Lucid" version="3">
+  <files>
+    <src>alu_compare.luc</src>
+    <src>full_adder.luc</src>
+    <component>cclk_detector.luc</component>
+    <component>pipeline.luc</component>
+    <src>alu_math.luc</src>
+    <src>led_writer.luc</src>
+    <src>multi_seven_seg.luc</src>
+    <component>counter.luc</component>
+    <src>displayLED.luc</src>
+    <src>alu_shift.luc</src>
+    <src top="true">au_top.luc</src>
+    <src>rowShift.luc</src>
+    <src>alu_add_mul_div.luc</src>
+    <src>endState.luc</src>
+    <component>reset_conditioner.luc</component>
+    <src>matrixConnect.luc</src>
+    <src>boole.luc</src>
+    <component>button_conditioner.luc</component>
+    <src>get_z.luc</src>
+    <src>matrixFSM.luc</src>
+    <src>alu.luc</src>
+    <src>sixteen_bit_adder.luc</src>
+    <src>seven_seg.luc</src>
+    <component>decoder.luc</component>
+    <src>alu_adder.luc</src>
+    <src>get_v.luc</src>
+    <src>alu_boole.luc</src>
+    <src>resetButton.luc</src>
+    <component>edge_detector.luc</component>
+    <src>shifterModule.luc</src>
+    <src>directionChange.luc</src>
+    <constraint>custom.acf</constraint>
+    <constraint lib="true">au.xdc</constraint>
+  </files>
+</project>

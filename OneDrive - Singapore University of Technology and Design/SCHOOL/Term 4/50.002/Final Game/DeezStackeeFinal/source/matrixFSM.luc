@@ -1,0 +1,287 @@
+module matrixFSM (
+    input clk,
+    input rst,
+    input stop_button,
+    input reset_button,
+    output level_num_out[4],
+    output matrixOut[18][8],
+    output timeout[4][4],
+    output scoreout[4][4]
+  ){
+
+    endState endState;
+    resetButton resetButton;
+    alu alu;
+   
+    .clk(clk){
+   
+      dff level_num[4](#INIT(b0000),.rst(rst));
+      dff current_row[16](#INIT(16b0));
+      dff pre_row[16](#INIT(16b0));
+      dff matrixShow[18][8](#INIT({b11111111,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,b11111111}));
+      fsm state(#INIT(IDLE))={IDLE, INITIAL, SHIFT, INIT_CHECK, INCREASE_LEVEL, CHECK, END_STATE, WIN, LOSE, TIMER, TIMER_END};
+      dff reset_button_reg(#INIT(0));
+      dff stop_button_reg(#INIT(0));
+    
+      counter slowclock(#DIV(25), .rst(rst));
+      edge_detector slowClockEdge(#RISE(1),#FALL(0));
+      
+      rowShift rowShift;
+    
+      dff speed1[23](#INIT(23b0));
+      dff speed2[22](#INIT(22b0));
+      dff speed1count(#INIT(0));
+    
+      dff time[4][4](#INIT({h0,h0,h6,h0}));
+      dff temp[5](#INIT(b00000));
+      dff score[4][4](#INIT({h0,h0,h0,h5}));
+      dff final_score[4][4](#INIT({h0,h0,h0,h0}));
+      dff final_time[4][4](#INIT({h0,h0,h0,h0}));
+    }
+
+   always{
+      alu.a=h0000;
+      alu.b=h0000;
+      alu.alufn=h00;
+      if(stop_button_reg.q==b0 && stop_button==b1){
+        stop_button_reg.d=b1;
+      }
+      if(reset_button_reg.q==b0 && reset_button==b1){
+         reset_button_reg.d=b1;
+      }  
+      
+     
+      level_num.d=level_num.q;
+      current_row.d=current_row.q;
+      matrixShow.d=matrixShow.q;
+      current_row.d=current_row.q;
+      
+      endState.endState=b0;
+    
+      rowShift.pre_row=pre_row.q;
+      rowShift.current_row=current_row.q;
+      rowShift.shift_or_check=b0;
+    
+      slowClockEdge.in = slowclock.value;
+
+      case(state.q){
+     
+       state.IDLE:
+           matrixShow.d={h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00};
+           matrixOut=matrixShow.q;
+           if(stop_button_reg.q==1){
+              state.d = state.INITIAL;
+            }else{ 
+              state.d=state.q;
+            }
+        
+       state.INITIAL:
+          level_num.d=b0000;
+          matrixShow.d[17:1]=resetButton.screen_matrix;
+          matrixShow.d[0]=b11110000;
+         
+          score.d={b0000,b0000,b0000,h5};
+          time.d={h0,h0,h6,h0};
+          final_time.d={h0,h0,h0,h0};
+          final_score.d={b0000,b0000,b0000,b0000};
+          temp.d = b00000;
+          current_row.d=c{8b0,b11110000};
+          matrixOut=matrixShow.q;
+          pre_row.d[7:0]=b11111111;
+          reset_button_reg.d=0;
+          stop_button_reg.d = 0;
+          state.d=state.SHIFT;
+      
+        state.SHIFT:
+      
+          if(stop_button_reg.q==b0 && stop_button==b1){
+            stop_button_reg.d=b1;
+          }
+          if(reset_button_reg.q==b0 && reset_button==b1){
+            reset_button_reg.d=b1;
+          }
+          time.d = time.q;
+          if (slowClockEdge.out){
+        // Timer Decrement
+            if(time.q[0] == 0){
+              if(time.q[1] > 0){
+                time.d[1] = time.q[1] - 1;
+                time.d[0] = b1001;
+              } 
+            } else {
+              time.d[0] = time.q[0] - 1;
+            }
+          }
+      
+          if(level_num.q<8){
+       
+            if(speed1.q==c{b111,hFFFFF}){
+              speed1.d=23b0;
+              speed1count.d=b1;
+              matrixShow.d[level_num.q]=rowShift.nextRefresh[7:0];
+              current_row.d=c{8b0,matrixShow.q[level_num.q]};
+            }else{ 
+               speed1.d=speed1.q+1;
+            }
+          }else{
+            if(speed2.q==c{b11,hFFFFF}){
+               speed2.d=22b0;
+               speed1count.d=b1;
+               matrixShow.d[level_num.q]=rowShift.nextRefresh[7:0];
+               current_row.d=c{8b0,matrixShow.q[level_num.q]};
+            }else{ 
+               speed2.d=speed2.q+1;
+            }
+          }
+           
+          current_row.d=current_row.q;
+          pre_row.d=pre_row.q;
+        
+          rowShift.pre_row=pre_row.q;
+          rowShift.current_row=current_row.q;
+          rowShift.shift_or_check=b1;
+        
+          matrixShow.d[15]=c{b0000,level_num.q+1}; //wtf???????????????????????
+         
+         
+          matrixShow.d[15:0]=matrixShow.q[15:0];
+        
+          if(speed1count.q==b1){
+              matrixShow.d[level_num.q]=rowShift.nextRefresh[7:0];
+              current_row.d= c{8b0,matrixShow.q[level_num.q]};
+              speed1count.d=b0;
+          }
+        
+          matrixOut=matrixShow.q;
+        
+          if (time.q=={h0,h0,h0,h0}){
+              state.d = state.LOSE;
+            }else{
+            if(stop_button_reg.q==1 || reset_button_reg.q==1){
+             state.d=state.INIT_CHECK;
+          }else{
+            state.d=state.SHIFT;
+          }
+        }
+   
+          if(level_num.q==0){
+             pre_row.d[7:0]=b11111111;
+          }else{ 
+             pre_row.d[7:0]= matrixShow.q[level_num.q-1];
+          }
+
+        
+      state.INIT_CHECK:
+        pre_row.d=pre_row.q;
+        current_row.d=current_row.q;
+        if(reset_button_reg.q==1){
+          state.d=state.IDLE;
+        }else if(stop_button_reg.q==1){
+          state.d=state.CHECK;
+        }
+
+    
+      state.CHECK:  
+       
+        rowShift.pre_row=pre_row.q;
+        rowShift.current_row=current_row.q;
+        rowShift.shift_or_check=b0;
+        
+        current_row.d=rowShift.nextRefresh;
+        
+        
+        matrixShow.d[level_num.q]=rowShift.nextRefresh[7:0];
+        
+        matrixShow.d[level_num.q+1]=rowShift.nextRefresh[7:0];
+        
+      
+        pre_row.d=pre_row.q;
+        
+        stop_button_reg.d=0;
+
+        if(rowShift.nextRefresh==16b0 || level_num.q==15 || time.q == {h0,h0,h0,h0}){
+          state.d=state.END_STATE;
+        }else{ 
+          state.d=state.INCREASE_LEVEL;
+        }
+        
+      state.INCREASE_LEVEL:     
+        alu.a=c{h000,level_num.q};
+        alu.b=h0001;
+        alu.alufn=h00; //add
+        level_num.d=alu.alu[3:0];
+        
+        if (score.q[0] == 5){
+          score.d[1] = score.q[1] + 1;
+          score.d[0] = 0;
+        } else {
+          score.d[0] = score.q[0] + 5;
+        }
+        
+        state.d=state.SHIFT;
+                
+      
+      state.END_STATE:
+        
+        if(rowShift.nextRefresh==16b0 || time.q == {h0,h0,h0,h0}){
+           state.d=state.LOSE;
+        }else if(level_num.q==15){
+           state.d=state.WIN;
+        } 
+    
+      state.WIN:
+      
+        endState.endState=1;
+        matrixShow.d=endState.screen_matrix;
+        matrixOut=matrixShow.q;
+        
+        final_time.d = time.q;
+        
+        final_score.d[0] = final_time.q[0];
+        temp.d = b1000 + final_time.q[1];
+        if (temp.q >= b01010){
+          final_score.d[1] = temp.q - b01010;
+          final_score.d[2] = h1;
+        }else{
+          final_score.d[1]=temp.q;
+          final_score.d[2] = h0;
+        }
+        
+        score.d=final_score.q;
+
+        if (reset_button_reg.q==1){
+        state.d=state.TIMER_END;}
+             
+      state.LOSE:
+      
+        endState.endState=0;
+        matrixShow.d=endState.screen_matrix;
+       
+        if(reset_button_reg.q==1){
+          state.d = state.TIMER_END;
+        }else{ 
+          state.d=state.q;
+        }
+        matrixOut=matrixShow.q;
+        
+      state.TIMER_END:
+       reset_button_reg.d = 0;
+       stop_button_reg.d = 0;
+       
+        if(reset_button_reg.q==1){
+          state.d=state.IDLE;
+        } else {
+          state.d = state.q;
+        }
+   
+    }     
+              
+      matrixOut=matrixShow.q;
+      level_num_out=level_num.q;
+      timeout = time.q;
+      scoreout = score.q;
+      
+      
+  }
+    
+}

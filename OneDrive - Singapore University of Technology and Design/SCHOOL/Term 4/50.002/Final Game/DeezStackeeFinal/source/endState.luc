@@ -1,0 +1,20 @@
+module endState (
+      input endState,//1 for win, 0 for lose
+      output screen_matrix[18][8]
+   ){
+      var i;
+    
+   always{
+    // SHOW BIG FUCKING L
+    screen_matrix={h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00,h00};
+      
+      if(endState==1){ //if win
+         /*for(i=0; i<16; i++){
+            screen_matrix[i]=b11111111;*/ //1111 1111
+          screen_matrix={b11111111,b11111111,b00000000,b01100110,b11111111,b11111111,b01111110,b00111100,b00011000,b00000000,b00000000,b01100110,b11111111,b11111111,b01111110,b00111100,b00011000,b00000000};
+         
+      }else if(endState==0){
+            screen_matrix={b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11000000,b11111111,b11111111};
+      }
+   }
+}

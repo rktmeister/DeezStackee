@@ -1,0 +1,17 @@
+module get_v (
+   input s16,    //MSB of s
+   input x16,    //MSB of a
+   input y16,    //MSB of b
+   output v
+  ) {
+  
+  sig x16_inv ,y16_inv, s16_inv; //connectors to store inverted inputs
+  
+  always{
+     x16_inv=!x16;      //invert the inputs
+     y16_inv=!y16;
+     s16_inv=!s16; 
+
+     v=(x16 &y16 &s16_inv) |(x16_inv &y16_inv &s16);
+  }
+}

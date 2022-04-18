@@ -1,0 +1,66 @@
+module alu (
+    input alufn[6],
+    input a[16],
+    input b[16],
+    output alu[16],
+    output z, 
+    output v, 
+    output n
+  ) {
+  
+  alu_math math;
+  alu_shift shift;
+  alu_compare compare;
+  alu_boole boole;
+  sig math_out[16],shif[16],comp[16],bool[16];
+  sig z_mid, v_mid, n_mid; 
+  
+  always{
+    alu = 16b0;                        //initialise alu input
+    
+    math.alufn=alufn[2:0];          //assign inputs to math module
+    math.x=a;
+    math.y=b;
+    math_out=math.math;         //assign outputs from math module
+    z_mid=math.z;
+    v_mid=math.v;
+    n_mid=math.n;
+     
+    compare.alufn=alufn[2:1];          //assign inputs to comp module
+    compare.z=z_mid;
+    compare.v=v_mid;
+    compare.n=n_mid;
+    comp=compare.cmp;                  //assign output from compare module
+ 
+    z=z_mid;                           //connect z,v,n to sig z_mid, v_mid, n_mid 
+    v=v_mid;
+    n=n_mid;
+
+    boole.x=a;                         //assign inputs to boole module
+    boole.y=b;
+    boole.alufn=alufn[3:0];
+    bool=boole.bool;                   //assign output from boole module
+
+    shift.x=a;                         //assign inputs to shift module
+    shift.y=b[3:0];
+    shift.alufn=alufn[1:0];
+    shif=shift.shif;                   //assign output from shift module
+ 
+    case(alufn[5]){
+    b0:
+      case(alufn[4]){
+      b0:
+        alu=math_out;                 //alufn[5:4] = 00 calls math module
+      b1:
+        alu=bool;                      //alufn[5:4] = 01 calls boole module
+      }
+    b1:
+      case(alufn[4]){
+      b0:
+        alu=shif;                      //alufn[5:4] = 10 calls shift module
+      b1:
+        alu=comp;                      //alufn[5:4] = 11 calls compare module
+    }
+   }
+ }
+}

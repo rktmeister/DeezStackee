@@ -1,0 +1,14 @@
+module get_z (
+    input s[16],    //input 16 sum bits
+    output z        
+  ) {
+  sig z1,z2,z3,z4;  //connecter
+  
+  always{ 
+    z1=!(s[0]|s[1]|s[2]|s[3]);            //or groups of 4 bits then invert them
+    z2=!(s[4]|s[5]|s[6]|s[7]);
+    z3=!(s[8]|s[9]|s[10]|s[11]);
+    z4=!(s[12]|s[13]|s[14]|s[15]);
+    z = z1 & z2 & z3 & z4;                //and the output of above
+  }
+}

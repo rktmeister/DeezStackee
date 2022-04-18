@@ -1,0 +1,90 @@
+pin stop_button C3 pulldown;
+pin reset_button C48 pulldown;
+
+pin clk CLOCK;
+clock clk 100MHz;
+
+pin rst_n RESET;
+
+pin led[0] LED0;
+pin led[1] LED1;
+pin led[2] LED2;
+pin led[3] LED3;
+pin led[4] LED4;
+pin led[5] LED5;
+pin led[6] LED6;
+pin led[7] LED7;
+
+// flip the Tx/Rx lines
+pin usb_rx USB_TX;
+pin usb_tx USB_RX;
+
+pin led_cathode[7] C34;
+pin led_cathode[6] C33;
+pin led_cathode[5] C17;
+pin led_cathode[4] C18;
+pin led_cathode[3] C37;
+pin led_cathode[2] C36;
+pin led_cathode[1] C14;
+pin led_cathode[0] C15;
+
+//CHANGE 8 BELOW
+pin led_anode[15] C28;
+pin led_anode[14] C27;
+pin led_anode[13] C23;
+pin led_anode[12] C24;
+pin led_anode[11] C31;
+pin led_anode[10] C30;
+pin led_anode[9] C20;
+pin led_anode[8] C21;
+
+pin led_anode[7] C40;
+pin led_anode[6] C39;
+pin led_anode[5] C11; 
+pin led_anode[4] C12;
+pin led_anode[3] C43;
+pin led_anode[2] C42;
+pin led_anode[1] C8; 
+pin led_anode[0] C9;
+
+pin timer_seg[0] A5;
+pin timer_seg[1] A6;
+pin timer_seg[2] A46;
+pin timer_seg[3] A45;
+pin timer_seg[4] A2;
+pin timer_seg[5] A3;
+pin timer_seg[6] A49;
+pin timer_seg[7] A48;
+
+pin timer_sel[0] A42;
+pin timer_sel[1] A43;
+pin timer_sel[2] A9;
+pin timer_sel[3] A8;
+
+pin score_seg[0]B14;
+pin score_seg[1]B15;
+pin score_seg[2]B37;
+pin score_seg[3]B36;
+pin score_seg[4]B11;
+pin score_seg[5]B12;
+pin score_seg[6]B40;
+pin score_seg[7]B39;
+
+pin score_sel[0]B8;
+pin score_sel[1]B9;
+pin score_sel[2]B43;
+pin score_sel[3]B42;
+
+pin highScore_seg[0]B20;
+pin highScore_seg[1]B21;
+pin highScore_seg[2]B31;
+pin highScore_seg[3]B30;
+pin highScore_seg[4]B17;
+pin highScore_seg[5]B18;
+pin highScore_seg[6]B34;
+pin highScore_seg[7]B33;
+
+pin highScore_sel[0]B27;
+pin highScore_sel[1]B28;
+pin highScore_sel[2]B24;
+pin highScore_sel[3]B23;

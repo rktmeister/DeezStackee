@@ -1,0 +1,19 @@
+module alu_compare (
+    input alufn[2],
+    input z, 
+    input v, 
+    input n,
+    output cmp[16]
+  ) {
+  always{
+    case(alufn){
+    b01:
+      cmp[0]=z;          //alufn[2:1] = 01 assigns z to LSB of CMP
+    b10:
+      cmp[0]=n^v;        //alufn[2:1] = 10 assigns n xor v to LSB of CMP
+    b11:
+      cmp[0]=z|(n^v);    //alufn[2:1] = 11 assigns (z or (n xor v)) to LSB of CMP
+    }
+    cmp[15:1]=15b0;      //cmp[15:1] all assigned to 0
+  }
+}

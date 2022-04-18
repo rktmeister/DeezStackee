@@ -1,0 +1,40 @@
+module matrixConnect(
+      input clk,
+      input rst,
+      input stop_button,
+      input reset_button, 
+    
+      output led_matrix[18][8],
+      output time_out[4][4],
+      output score_out[4][4]
+   ){
+
+
+      .clk(clk) {
+         dff matrix[18][8] (#INIT({8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0,8b0}));
+
+         matrixFSM matrixFSM(.rst(rst));
+       }
+     //  edge_detector speed1Edge(#RISE(1), #FALL(0),.clk(speed1.value));
+        
+         
+       
+
+   always{
+   
+
+    
+    // matrixFSM.pre_screen_matrix=matrix.q;
+    matrixFSM.stop_button=stop_button;
+    matrixFSM.reset_button=reset_button;
+
+    matrix.d= matrixFSM.matrixOut;
+    time_out = matrixFSM.timeout;
+    score_out = matrixFSM.scoreout;
+ 
+    led_matrix=matrix.q;
+
+      
+
+  }
+}

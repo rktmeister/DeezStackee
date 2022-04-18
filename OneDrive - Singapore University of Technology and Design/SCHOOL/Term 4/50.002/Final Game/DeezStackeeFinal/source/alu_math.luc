@@ -1,0 +1,37 @@
+module alu_math (
+    input x[16],  
+    input y[16],  
+    input alufn[3],
+    output math[16],
+    output z,
+    output v,
+    output n
+  ) {
+  alu_add_mul_div math_1;
+  //alu_modulo math_2;
+  sig math_1_out[16];//,math_2_out[16];
+  
+  always {
+    math = 16b0;
+    
+    math_1.x=x;                            //assign inputs to add_mul_div module
+    math_1.y=y;
+    math_1.alufn=alufn[1:0];
+    math_1_out=math_1.add_mul_div;         //assign outputs from add_mul_div module
+    z=math_1.z;
+    v=math_1.v;
+    n=math_1.n;
+    
+    //math_2.x=x;                            //assign inouts to modulo module
+    //math_2.y=y;
+    //math_2_out=math_2.mod;                 //assign output from modulo module
+    
+    case(alufn[2]){
+      b0:
+        math=math_1_out;                   //alufn[2]=0 calls add_mul_div module
+      //b1:
+        //math=math_2_out;                   //alufn[2]=1 calls modulo module
+    }
+    
+  }
+}

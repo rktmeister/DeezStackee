@@ -1,0 +1,26 @@
+module boole (
+    input x,
+    input y,
+    input alufn[4],
+    output boole
+  ) {
+  always{
+    boole = 0;
+    case(x){
+    b0:
+      case(y){
+      b0:
+        boole=alufn[0];        //if both x and y are 0, boole = alufn[0]
+      b1:
+        boole=alufn[2];        //if x input is 0 and y input is 1, boole = alufn[2]
+       }
+    b1:
+       case(y){
+      b0:
+        boole=alufn[1];        //if x input is 1 and y input is 0,  boole = alufn[1]
+      b1:
+        boole=alufn[3];        //if both x and y input are 1, boole = alufn[3]
+         }
+     }
+  }
+}

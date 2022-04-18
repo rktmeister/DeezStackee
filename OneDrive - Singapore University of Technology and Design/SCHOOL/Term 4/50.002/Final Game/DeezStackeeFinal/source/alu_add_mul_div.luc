@@ -1,0 +1,49 @@
+module alu_add_mul_div (
+    input alufn[2],
+    input x[16],
+    input y[16],
+    output add_mul_div[16],
+    output z,
+    output v,
+    output n
+  ) {
+  
+  sig add[16];//,mul[16],div[16];
+  alu_adder adder;
+  //alu_multiplier multiplier;
+  //alu_divide divide;
+  
+  always{
+    add_mul_div = 16b0;                       //initialise add_mul
+    
+    adder.alufn0=alufn[0];             //assign inputs to adder module
+    adder.x=x;
+    adder.y=y;
+    add=adder.s;                       //assign outputs from adder module
+    z=adder.z;
+    v=adder.v;
+    n=adder.n;
+
+    //multiplier.x=x;                     //assign inputs to multiplier module
+    //multiplier.y=y;
+    //mul=multiplier.mul;                 //assign output from multiplier module
+    
+    //divide.x=x;                         //assign inputs to divide module
+    //divide.y=y;
+    //div=divide.div;                     //assign output from divide module
+    
+ 
+   case(alufn[1]){
+   b0:
+     add_mul_div=add;                       //alufn[1]=0 calls add module
+   //b1:
+      //case(alufn[0]){
+        //b0:
+         //add_mul_div=mul;                   //alufn[1:0]=10 calls multiplier module
+        //b1: 
+          //add_mul_div=div;                  //alufn[1:0]=11 calls divide module
+        //}
+      
+   }
+  }
+}

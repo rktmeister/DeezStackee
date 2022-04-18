@@ -1,0 +1,10 @@
+module resetButton (
+    output screen_matrix[17][8]
+  ){
+  var i;
+  always{
+    for(i=0; i<17;i++){
+    screen_matrix[i]=b00000000;
+    }
+  } 
+}

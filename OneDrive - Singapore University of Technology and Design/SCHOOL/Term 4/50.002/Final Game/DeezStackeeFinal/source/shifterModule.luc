@@ -1,0 +1,93 @@
+module shifterModule (
+    input x[16],
+    input b[4],
+    input alufn,
+    output shiftOutput[16]
+  ) {
+    sig w[16];
+    sig y[16];
+    sig z[16];
+  always{
+    if(alufn==b0 | (alufn==b1 & x[0]==b0)){      //shift left or shift right with MSB with 0
+      case(b[3]){
+      b0:
+        w = x;
+      b1:
+        w[15:8] = x[7:0];                 //shift by 8
+        w[7:0] = 8b0;
+      default:
+        w = x;
+       }
+
+      case(b[2]){
+        b0:
+          y = w;
+        b1:
+          y[15:4] = w[11:0];              //shift by 4
+          y[3:0] = 4b0; 
+        default:
+          y = w;
+        }
+ 
+      case(b[1]){
+      b0:
+          z = y;
+      b1:
+          z[15:2] = y[13:0];              //shift by 2
+          z[1:0] = 2b0;
+      default:
+          z = y;
+      }
+ 
+      case(b[0]){
+        b0:
+          shiftOutput = z;
+        b1:
+          shiftOutput[15:1] = z[14:0];   //shift by 1
+          shiftOutput[0] = b0;
+        default:
+          shiftOutput = z;
+        }
+   }else if(alufn==b1 & x[0]==b1){        //shift right with MSB of 1
+      case(b[3]){
+      b0:
+        w = x;
+      b1:
+        w[15:8] = x[7:0];
+        w[7:0] =b11111111;                //shift right by 8, 8MSB are all 1
+      default:
+        w = x;
+       }
+
+      case(b[2]){
+      b0:
+        y = w;
+      b1:
+        y[15:4] = w[11:0];                //shift right by 4, 4MSB are all 1
+        y[3:0] = b1111; 
+      default:
+        y = w;
+      }
+ 
+      case(b[1]){
+      b0:
+          z = y;
+      b1:
+          z[15:2] = y[13:0];
+          z[1:0] = b11;                   //shift right by 2, 2MSB are all 1
+      default:
+          z = y;
+      }
+ 
+      case(b[0]){
+      b0:
+        shiftOutput = z;
+      b1:
+        shiftOutput[15:1] = z[14:0];
+        shiftOutput[0] = b1;             //shift right by 1, MSB is 1
+      default:
+        shiftOutput = z;
+        }
+    }
+ }
+}

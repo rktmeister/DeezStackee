@@ -1,0 +1,20 @@
+module alu_boole (
+     input x[16],
+     input y[16],
+     input alufn[4],
+     output bool[16]
+  ) {
+    
+  boole bool_value[16];
+  var i;
+  
+  always{
+    
+    bool_value.x=x;                         //assign inputs to boole module
+    bool_value.y=y;
+    for(i=0;i<16;i++){
+      bool_value.alufn[i]=alufn;            //input alufn into each of the 16 boole modules
+    }
+    bool=bool_value.boole;                  //output of 16 boole modules assigned to bool
+  }
+}
